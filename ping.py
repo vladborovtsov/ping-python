@@ -21,7 +21,7 @@
 #
 #   Right click icon in lower left of screen, use Command Prompt (Admin)
 
-__date__ = "2014/02/27"
+__date__ = "2017/08/05"
 __version__ = "v0.93"
 
 import sys
@@ -148,7 +148,7 @@ class PingService(object):
                                   socket.getprotobyname('icmp'))
         try:
             self.sock.connect((host, 22))
-        except socket.gaierror, ex:
+        except socket.gaierror as ex:
             self.log("ping socket cannot connect to %s: %s" % (host, ex[1]))
             self.sock.close()
             return
@@ -330,7 +330,7 @@ if __name__ == "__main__":
     import types
 
     if len(sys.argv) < 2:
-        print "usage: python2 ping.py <ip>"
+        print("usage: python3 ping.py <ip>")
         sys.exit(1)
 
     ping_svc = PingService(sys.argv[1])
@@ -343,7 +343,7 @@ if __name__ == "__main__":
 
             # print log messages
             while len(PingService.msgs) > 0:
-                print PingService.msgs.pop(0)
+                print(PingService.msgs.pop(0))
 
     except KeyboardInterrupt:
         pass
